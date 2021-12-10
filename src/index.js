@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import CounterContext from "./contexts/counter";
+import Counter from "./components/counter";
+
+class App extends React.Component {
+  // 初期値設定
+  constructor(props) {
+    super(props);
+
+    // increment（インクリメント)は数の増加を意味する言葉
+    // decrement(デクリメント)は数の減少を意味する言葉
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+
+    this.state = {
+      count: 0,
+      increment: this.increment,
+      decrement: this.decrement,
+    };
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
