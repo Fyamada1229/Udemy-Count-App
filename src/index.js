@@ -1,13 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import React from "react";
-import ReactDOM from "react-dom";
 import CounterContext from "./contexts/counter";
 import Counter from "./components/counter";
-import { render } from "@testing-library/react";
 
 class App extends React.Component {
   // 初期値設定
@@ -34,15 +28,12 @@ class App extends React.Component {
   }
 
   render() {
-    <CounterContext.Provoider value={this.state}>
-      <Counter></Counter>
-    </CounterContext.Provoider>;
+    return (
+      <CounterContext.Provider value={this.state}>
+        <Counter></Counter>
+      </CounterContext.Provider>
+    );
   }
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
