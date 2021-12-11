@@ -7,6 +7,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CounterContext from "./contexts/counter";
 import Counter from "./components/counter";
+import { render } from "@testing-library/react";
 
 class App extends React.Component {
   // 初期値設定
@@ -23,6 +24,19 @@ class App extends React.Component {
       increment: this.increment,
       decrement: this.decrement,
     };
+  }
+  increment() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  decrement() {
+    this.setState({ count: this.state.count - 1 });
+  }
+
+  render() {
+    <CounterContext.Provoider value={this.state}>
+      <Counter></Counter>
+    </CounterContext.Provoider>;
   }
 }
 
